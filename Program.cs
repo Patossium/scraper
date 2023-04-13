@@ -24,7 +24,7 @@ namespace scraper
             {
                 eventLinks = GetEventLinks("https://www.bilietai.lt/lit/renginiai/teatras/page:" + i, eventLinks);
             }
-            var listEventDetails = GetEvenDetailsAlternative(eventLinks);
+            var listEventDetails = GetEvenDetailsBilietaiLt(eventLinks);
             exportEventsToCsv(listEventDetails, website, eventType);
 
             url = "https://www.bilietai.lt/lit/renginiai/koncertai/";
@@ -36,7 +36,7 @@ namespace scraper
                 eventLinks = GetEventLinks("https://www.bilietai.lt/lit/renginiai/koncertai/page:" + i, eventLinks);
             }
             listEventDetails = new List<EventDetails>();
-            listEventDetails = GetEvenDetailsAlternative(eventLinks);
+            listEventDetails = GetEvenDetailsBilietaiLt(eventLinks);
             exportEventsToCsv(listEventDetails, website, eventType);
         }
         static List<string> GetEventLinks(string url, List<string> eventLinks)
