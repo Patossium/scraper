@@ -7,6 +7,7 @@ using System.IO;
 using System.Globalization;
 using CsvHelper;
 using System.Text;
+using System.Diagnostics;
 
 namespace scraper
 {
@@ -126,7 +127,7 @@ namespace scraper
         }
         static void exportEventsToCsv(List<EventDetails> listEventDetails, string website, string eventType)
         {
-            using (var writer = new StreamWriter($@"/Users/p4t0s/Desktop/scraper/CSVs/{website}_{eventType}_{DateTime.Now.ToFileTime()}.csv"))
+            using (var writer = new StreamWriter($@"/Users/p4t0s/Desktop/scraper/CSVs/{website}_{eventType}_{DateTime.Now.ToFileTime()}.csv", false, Encoding.GetEncoding(65001), 512))
             using(var csv = new CsvWriter(writer, CultureInfo.InvariantCulture)){
                csv.WriteRecords(listEventDetails);
            }
